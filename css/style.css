@@ -1,0 +1,78 @@
+.title{
+	color: white;
+}
+
+a.anchor {
+    display: block;
+    position: relative;
+    top: -80px;
+    visibility: hidden;
+}
+
+.green{
+	border: solid #6AC5AC 3px;
+}
+
+.red{
+	border: solid #D64078 3px;
+}
+
+.well{
+	overflow: auto;
+}
+
+code{
+	margin-bottom: 10px;
+}
+
+#HoverExample{
+	display: none;
+}
+
+.box{
+	margin-top: 10px;
+	background-color: #6AC5AC;
+	width: 200px;
+	height: 200px;
+}
+
+#HideShowSpeedExample{
+	background-color: #D64078;
+}
+
+#ToggleExample{
+	background-color: #6AC5AC;
+}
+
+#FadeExample{
+	background-color: #D64078;
+}
+
+#RemoveExample{
+	margin-top: 10px;
+	display: block;
+	height: 100px;
+	background-color: #6AC5AC;
+}
+
+#EmptyExample{
+	margin-top: 10px;
+	padding: 10px;
+	border: solid #6AC5AC 3px;
+}
+
+#AddRemoveExample{
+	margin-top: 10px;
+}
+
+.red{
+	background-color: red;
+}
+
+.blue{
+	background-color: blue;
+}
+
+.large{
+	width: 600px;
+}

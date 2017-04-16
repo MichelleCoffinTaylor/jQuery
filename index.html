@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+		<meta name="description" content="">
+		<meta name="author" content="">
+
+		<title>JQuery Introduction</title>
+
+		<!-- Bootstrap core CSS -->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+
+		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+		<link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+		<!-- Custom styles for this template -->
+		<link href="css/dashboard.css" rel="stylesheet">
+		
+		<!-- HAVE A LOOK HERE FOR ALL OF THE CSS PROPERTIES -->
+		<link rel="stylesheet" href="css/style.css">
+
+
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container text-center">
+				<h1 class="title">JQuery Introduction</h1>
+			</div>
+		</nav>
+
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-3 col-md-2 sidebar">
+					<ul class="nav nav-sidebar">
+						<li><a href="#Installation">Installation</a></li>
+						<li><a href="#DocumentReady">Document Ready</a></li>
+						<li><a href="#Selector">Selectors</a></li>
+						<li><a href="#Events">Common jQuery events</a></li>
+						<li><a href="#Functions">Common Functions</a></li>
+						<li><a href="#ManipluatingDom">Manipulating the DOM</a></li>
+					</ul>
+				</div>
+
+				<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 Examples">
+					<h1 class="page-header">JQuery Introduction</h1>
+						<p>
+							JQuery is an open source Javascript Library. It greatly simplifies javascript programming and has hundreds to pre built functions which makes writing javascript alot easier. <br>
+							The reason we are learning jQuery before we do javascript is that it is a lot easier to understand and will help us learn Javascript easier in the future.<br>
+							When we use jQuery, we will be manipulate the DOM (Document Object Model). The DOM is in reference to every element in your page.
+						 </p>
+
+					<hr>
+
+					<a class="anchor" id="Installation"></a>
+					<div>
+						<h2>Installation</h2>
+						<p>There are two main ways to get jQuery into your website. You can download the full jQuery library from the <a href="https://jquery.com/" target="blank">jQuery Wesbite</a>. Or you can use a CDN</p>
+						<h4>Download Library</h4>
+						<p>If you want to have a local version of you you need to download the full library from the <a href="https://jquery.com/" target="blank">jQuery Wesbite</a></p>
+						<p>There are two different versions of the jQuery you can download</p>
+						<ul>
+							<li>Production</li>
+							<li>Development</li>
+						</ul>
+						<p>Development should be used during your development stage and when you go live you should switch it to production which is more compressed with a smaller file size</p>
+						<div class="alert alert-success" role="alert">
+							<strong>Pros of downloading library</strong>
+							<ul>
+								<li>You have a local version of jQuery in your project so you can use jQuery when you aren't connected to the internet.</li>
+								<li>Loading times will be quite fast as you have it in your project.</li>
+							</ul>
+						</div>
+						<div class="alert alert-danger" role="alert">
+							<strong>Cons of using download library</strong>
+							<ul>
+								<li>It takes up some disk space on your live server which could be given to something else.</li>
+								<li>Your local jQuery won't be up to date if a new version comes out.</li>
+							</ul>
+						</div>
+						<h4>Content Delivery Network (CDN)</h4>
+						<p>If you don't want to include a local version you can use a cdn from an alraedy exsisting online serve.<a href="https://developers.google.com/speed/libraries/" target="blank">Google</a> has a wide range of different hosted libraries which you can use/</p>
+						<div class="alert alert-success" role="alert">
+							<strong>Pros of using a CDN</strong>
+							<ul>
+								<li>The CDN will always be the latest version of the library.</li>
+								<li>Many internet users already downloaded jQuery using a CDN when they have visted another site using the same CDN. This means it will be loaded into their cache so when they visit your site it will load from their cache instead of the host, which will be much faster.</li>
+							</ul>
+						</div>
+						<div class="alert alert-danger" role="alert">
+							<strong>Cons of using a CDN</strong>
+							<ul>
+								<li>If for some reason the CDN is down and your users haven't used jQuery before, any functions called won't be able to run</li>
+							</ul>
+						</div>
+						<div class="well">
+							&lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"&gt;&lt;/script&gt;
+						</div>
+						<p>Your script link to the jQuery should be put at the bottom of your body. Sometimes javascript and jQuery can take quite awhile to load. Because HTML/CSS renders from top to bottom. This means that all the elements on your page will be loaded first and then it will start to run the jQuery. You then want to create your own javascript file for your project. This should be called after you call jQuery. If you call it before hand, the scripts won't recognise any of the jQuery functions you use.</p>
+					</div>
+				
+					<hr>
+	
+					<a class="anchor" id="DocumentReady"></a>
+					<div>
+						<h3>Document Ready</h3>
+						<p>jQuery is made to help up select and manipluate elements easy. You can select element tags, id's or classes. The basic syntax for writing jQuery is <strong>$(selector).action();</strong>. The <strong>$</strong> is calling access to jQuery. <strong>Selector</strong> is the element which you are selecting. and <strong>action</strong> is the action which is being performed. <br>
+						jQuery has a bunch of pre build actions which would usually take us serveal lines of code to get working but only need one word.
+						</p>
+						<h4>Getting the document ready</h4>
+						<p>When writing jQuery you should write it within the following function</p>
+						<div class="well">
+<pre>
+$(document).ready(function(){
+
+});
+</pre>
+						</div>
+						<p>Adding it within the document ready function will prevent jQuery from running in the document until the page is finished loading.</p>
+					</div>
+
+					<hr>
+	
+					<a class="anchor" id="Selector"></a>
+					<div>
+						<h3>Selecting Elements</h3>
+						<p>In jQuery you can select many different elements. You select them quite similar to CSS</p>
+						<h4>Elements</h4>
+						<div class="well">
+							$("p")
+						</div>
+						<p>This selector will select all of the p elements within the page.</p>
+						<h4>ID's</h4>
+						<div class="well">
+							$("#id")
+						</div>
+						<p>This selector will select the element on the page with the ID given.</p>
+						<h4>Classes</h4>
+						<div class="well">
+							$(".class")
+						</div>
+						<p>This selector will select all of the elements which have the given class.</p>
+						<h4>This</h4>
+						<div class="well">
+							$(this)
+						</div>
+						<p>$(this) is a selector which can only be used when a jQuery function has occurred. It is in reference to the element with triggers the event. Read the example bellow.</p>
+						<div class="well">		
+<pre>
+$("#Example").click(function(){
+	$(this).hide();
+});		
+</pre>
+						</div>
+						<p>What is happening in this example is when a element with the ID of Example is clicked we want to hide that element. Instead of adding $('#Example').hide(); we can just say $(this). In this example $(this) means $('#Example') beacuse that is the element which is calling the function.</p>
+					</div>
+
+					<hr>
+	
+					<a class="anchor" id="Events"></a>
+					<div>
+						<h3>Common jQuery Events</h3>
+						<p>jQuery has a wide range of pre built events which get activated when specific events happen in the page. These functions are called within the document ready function. <br>Bellow are some of the common functions which might get used</p>
+						<ul>
+							<li>Click</li>
+							<li>Double click</li>
+							<li>Hover</li>
+							<li>Mouse Enter</li>
+							<li>Mouse Leave</li>
+						</ul>
+
+						<h4>Click</h4>
+						<p>The click event gets activated when the user clicks on the trigger element.</p>
+						<div class="well">
+<pre>
+$("#Test").click(function(){
+
+});
+</pre>
+						</div>
+						<p>What this is saying is when someone clicks on the element with the ID of Test, to run the function which would be written within the function. Click on the example bellow to get an alert pop up.</p>
+						<button class="btn btn-primary" id="Click">Click Me</button>
+
+						<h4>Double Click</h4>
+						<p>The Double Click event is very similar to the click event, but the only difference is that you needs to double click on the element.</p>
+						<div class="well">
+<pre>
+$("#Test").dblclick(function(){
+
+});
+</pre>
+						</div>
+						<p>What this is saying is when someone Double Clicks on the element with the ID of Test, to run the function which would be written within the function. Double click on the button bellow to get an alert pop up. If you do a single click on it then nothing will happen.</p>
+						<button class="btn btn-primary" id="DoubleClick">Double Click Me</button>
+
+						<h4>Mouse Enter</h4>
+						<p>The mouse enter event get triggered when you cursor is over the element.</p>	
+						<div class="well">
+<pre>
+$("#Test").mouseover(function(){
+
+});
+</pre>
+						</div>
+						<button class="btn btn-primary" id="MouseEnter">Move the mouse over this element</button>
+
+						<h4>Mouse Leave</h4>
+						<p>The mouse leave event gets triggered when your cursor leave the element which you have entered.</p>	
+						<div class="well">
+<pre>
+$("#Test").mouseover(function(){
+
+});
+</pre>
+						</div>
+						<button class="btn btn-primary" id="MouseLeave">Move the mouse over this element and then leave it</button>
+
+						<h4>Hover</h4>
+						<p>The Hover event is a mix of both the mouse enter and leave function. Functions which you run within this function will run when your mouse enters the element and stops when you leave it. Hover is an event which you could do in CSS to change properties of the element. But in jQuery we can use it to run other jQuery functions. This event gets called when the cursor is over the element.</p>
+						<div class="well">
+<pre>
+$("#Test").hover(function(){
+
+});
+</pre>
+						</div>
+						<p>In the Example bellow, when you hover over the button, another one should appear next to it.</p>
+						<button class="btn btn-primary" id="Hover">Hover Over Me</button>
+						<button class="btn btn-success" id="HoverExample">This Appears When Hovering</button>
+
+						<p>There are many other pre built events which you can run using jQuery.</p>
+						<ul>
+							<li>mousedown()</li>
+							<li>mouseup()</li>
+							<li>focus()</li>
+							<li>blur()</li>
+							<li>on()</li>
+						</ul>
+						<p>w3school has a list of some other jQuery events which are out there and examples for each. <a href="https://www.w3schools.com/jquery/jquery_ref_events.asp" target="blank">Link Here</a></p>
+					</div>
+
+					<hr>
+
+					<a class="anchor" id="Functions"></a>
+					<div>
+						<h3>Effects</h3>
+						<p>Along with events, jQuery has a bunch of pre built effects which can help us out with our coding.</p>
+
+						<h4>Prevent Default</h4>
+						<p>Many html elements have pre built events which happen. An example is the <code>&lt;a&gt;</code> tag. When you click on it, if there is a href then you will be directed to the url which is described. The prevent default function stops the default event from running, we can then call other things we want to happen instead.</p>
+						<div class="well">
+<pre>
+event.preventDefault();			
+</pre>
+						</div>
+						<p>In the example bellow there are two links. They both have the same href which links to the jquery website. The first one is just a normal <code>&lt;a&gt;</code> tag and the second is one which uses prevent default.</p>
+						<a href="https://jquery.com/" target="blank">Link with without prevent default</a><br>
+						<a id="DefaultExample" href="https://jquery.com/">Link with prevent default</a>
+						<p>As you can see by this example when you click on the first one you open a new tab to the jQuery website. When you click the second one then nothing happens. I have created a click event which when activates prevents the elements defaults default jobs.</p>
+
+						<h4>Hide and Show</h4>
+						<p>The hide function is used for hiding an element on the page. What it does it adds <code>Dispay:none</code> to the element</p>
+						<div class="well">		
+<pre>
+$("Example").hide();		
+</pre>
+						</div>
+						<p>The show function adds <code>Display:block</code> back onto the the element.</p>
+						<div class="well">		
+<pre>
+$("Example").show();		
+</pre>
+						</div>
+						<p>Bellow is an example which hides a box when you click the hide button, but shows it again when you click the show button.</p>
+						<button class="btn btn-primary" id="Hide">Hide</button>
+						<button class="btn btn-primary" id="Show">Show</button>
+						<div class="box" id="HideShowExample"></div>
+						<p>You can also set the amount of time for the hide and show function to run. In the example bellow it states that the show function would take 5 seconds for the element to fully show.</p>
+						<div class="well">		
+<pre>
+$("Example").show(5000);		
+</pre>
+						</div>
+						<button class="btn btn-primary" id="HideSpeed">Hide</button>
+						<button class="btn btn-primary" id="ShowSpeed">Show</button>
+						<div class="box" id="HideShowSpeedExample"></div>
+
+						<h4>Toggle</h4>
+						<p>Toggle is a function which does the hide and show function together. It satates if the element has a display of block, then when the event happens, turn that into display none. And if it is display none when the event gets called, give it a display of block</p>
+						<div class="well">		
+<pre>
+$("Example").toggle();		
+</pre>
+						</div>
+						<button class="btn btn-primary" id="ToggleButton">Toggle Box</button>
+						<div class="box" id="ToggleExample"></div>
+						<p>Just like the hide and show functions you can add speed to it the exact same way as teh one above.</p>
+
+						<h4>Fade In & Fade Out</h4>
+						<p>This is once again similar to the above effects. Just like hide and show it will change its display property depending on what effect is used. It will also change the opacity of the object and change that value depending on which effect you use. It slowly either increases or decreases the opacity until it is either 0 for fade out and 1 for fade in.</p>
+						<div class="well">		
+<pre>
+$("Example").fadeIn();
+$("Example").fadeOut();		
+</pre>
+						</div>
+						<button class="btn btn-primary" id="FadeOut">Fade Out</button>
+						<button class="btn btn-primary" id="FadeIn">Fade In</button>
+						<div class="box" id="FadeExample"></div>
+
+						<p>Once again there is a wide range of other effects which we could add to elements and these are only a sample.</p>
+					</div>
+
+					<hr>
+
+					<a class="anchor" id="ManipluatingDom"></a>
+					<h3>Manipulating the DOM</h3>
+					<p>So far we have only been using jQuery to either create events or hiding or showing elements. One of the best things about javascript is that it gives us the ability to completly change the DOM. We can add elements to the page which weren't originally in the html. We can remove elements, empty entire sections and much more.</p>
+					
+					<h4>Append</h4>
+					<p>Append is a jQuery function for adding objects into the DOM. Append will add whatever you set to the end of the parent you specify. You should always append something to a parent element as if you don't then it won't know what you are wanting to do.</p>
+					<div class="well">		
+<pre>
+$("p").append("Some random Text to the end");		
+</pre>
+					</div>
+					<p>What the line of code above says, add the string "Some Random Text" to the end of all <code>&lt;p&gt;</code> tags you have in the site. If you have a button which always appends the line then it will constantly be adding it and will never stop.</p>
+					<button class="btn btn-primary" id="AppendButton">Append Text</button>
+					<p id="AppendExample">This is the starting text.</p>
+					<p>Using Prepend you can also add html elements into the page. Instead of just writing a normal string, you can write out a full html element and that will append into the parent. An Example of this is if you had a <code>&lt;ul&gt;</code> element and you wanted to keep adding <code>&lt;li&gt;</code> elements into the list.</p>
+					<div class="well">		
+<pre>
+$("ul").append("&lt;li&gt;This is a new list item&lt;/li&gt;");		
+</pre>
+					</div>
+					<button class="btn btn-primary" id="AddListItem">Add New List Item</button>
+					<p><strong>Append a new list item</strong></p>
+					<ul id="ListExample">
+						<li>This is the original list item</li>
+					</ul>
+
+					<h4>Prepend</h4>
+					<p>Prepend works the exact same as the append function. The only difference is that it add's it to the beginning of the parent element.</p>
+					<div class="well">		
+<pre>
+$("p").prepend("Some random Text to the beginning");		
+</pre>
+					</div>
+					<button class="btn btn-primary" id="PrependButton">Prepend Text</button>
+					<p id="PrependExample">This is the starting text.</p>
+
+					<h4>Remove</h4>
+					<p>Remove is a function which completely removes html elements from the pages. When this function is called, the browser will render your html file but will completely leave out what you have asked to remove in jQuery.</p>
+					<div class="well">		
+<pre>
+$("#RemoveExample").remove();		
+</pre>
+					</div>
+					<p>In the code above, it is completely removing the element with the ID of RemoveExample. In the example bellow, if you inspect the page and find where we have <code>&lt;div id="RemoveExample"&gt;&lt;/div&gt;. When you click the remove element button, this div should be removed.</code></p>
+					<button class="btn btn-primary" id="RemoveButton">Remove Element</button>
+					<div id="RemoveExample"></div>
+
+					<h4>Empty</h4>
+					<p>Sometimes you might not want to completely remove the element, but rather just empty all of its contents. The empty function will empty everything within the selected element.</p>
+					<div class="well">		
+<pre>
+$("#EmptyExample").empty();		
+</pre>
+					</div>
+					<p>This line of code will remove all of the child elements the selected div but it won't affect itself.</p>
+					<button class="btn btn-primary" id="EmptyButton">Empty Element</button>
+					<div id="EmptyExample">
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					</div>
+
+					<h4>Add and Remove Class</h4>
+					<p>jQuery gives us a real simple way to add and remove classes to our html elements. When you use addClass, if that class doesn't already exsist on the element then it will add it, if you use removeClass, if it exsists on the element it will remove it.</p>
+					<div class="well">		
+<pre>
+$("#ID").addClass('Red');
+$("#ID").removeClass('Blue');
+</pre>
+					</div>
+					<p>What this states is that it will add the class 'red' to the element with the ID of ID and it will also remove the class 'blue' from that element aswell.</p>
+					
+					<button class="btn btn-primary" id="AddRed">Add Red</button>
+					<button class="btn btn-primary" id="AddBlue">Add Blue</button>
+					<div id="AddRemoveExample" class="box blue"></div>
+					<p>What this example is doing is when you click add Red, it removes the class blue from the element and adds the class red. When you click the add blue button it does the opotsite.</p>
+
+					<h4>Toggle Class</h4>
+					<p>Toggle Class is the same as Add/Remove Class, only it simplifies the function to include both. If you are toggling a class. If it already exsits on an element, it will remove it, and if it doesn't it will add it.</p>
+					<div class="well">		
+<pre>
+$("#ID").toggleClass('Large');
+</pre>
+					</div>
+					<p>This line of code above states that it is toggling a class called large on and off.</p>
+					<button id="ToggleClassButton" class="btn btn-primary">Toggle Size</button>
+					<div id="ToggleClassExample" class="box"></div>
+					<P>Clicking the toggle size button will add on the class of large which has a width of 600px. WHen you click it again it will remove that class and then it will revert to its original size.</P>
+
+					<h4>CSS</h4>
+					<p>So far we have been talking about manipulating the DOM using classes. What we can do is directly change the css of an element using jQuery.</p>
+					<div class="well">		
+<pre>
+$("#ID").css('background-color', 'yellow');
+</pre>
+					</div>
+					<p>This adds just a single CSS style to the element. It won't change anything in the exsisting CSS file, but it will add <code>style=""</code> directly into the html element and because we are adding it to the element itself, that value will overide any exsisting values which might conflict with it.<br>You can also change several different css elements this way by putting the values into an array.</p>
+					<div class="well">		
+<pre>
+$("#ID").css({'background-color':'yellow','width':'600px'})
+</pre>
+					</div>
+					<button id="CssExampleButton" class="btn btn-primary">Add CSS</button>
+					<div id="CssExample" class="box"></div>
+					<p>Clicking the add CSS button will directly add on a background colour of yellow and a width of 600px to the element. Originally they have speicifed background colour and width values already but this will overide those values.</p>
+
+
+
+
+
+
+
+				</div>
+			</div>
+		</div>
+
+		<!-- Bootstrap core JavaScript
+		================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+		<script src="js/bootstrap.min.js"></script>
+		<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+		<script src="js/holder.min.js"></script>
+		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+		<script src="js/ie10-viewport-bug-workaround.js"></script>
+		<script src="js/script.js"></script>
+	</body>
+</html>
